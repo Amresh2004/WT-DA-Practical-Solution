@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Student Form</title>
+</head>
+<body>
+
+    <input type="text" id="studentName" placeholder="Enter student name"><br><br>
+
+    <!-- Hidden Image Div -->
+    <div id="imageDiv" style="display: none;">
+        <img id="changeImage" src="1.jpg" width="200" />
+    </div>
+
+    <script>
+        // Change text color and font size when typing
+        document.getElementById('studentName').addEventListener('input', function() {
+            let studentName = this.value;
+            if (studentName) {
+                this.style.color = 'red';
+                this.style.fontSize = '18px';
+            }
+        });
+
+        // Show image when clicking on the input field
+        document.getElementById('studentName').addEventListener('click', function() {
+            document.getElementById('imageDiv').style.display = 'block';
+        });
+
+        // Image interactions
+        let image = document.getElementById('changeImage');
+
+        image.addEventListener('mouseover', function() {
+            this.style.width = '250px';
+        });
+
+        image.addEventListener('mouseout', function() {
+            this.style.width = '200px'; // Fixed incorrect width reduction
+        });
+
+        image.addEventListener('mouseup', function() {
+            this.style.width = '500px';
+        });
+
+        image.addEventListener('click', function() {
+            this.style.width = '700px';
+        });
+    </script>
+
+</body>
+</html>

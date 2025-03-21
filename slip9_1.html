@@ -1,0 +1,50 @@
+<script>
+    function validateForm() {
+        var name = document.myform.name.value;
+        var password = document.myform.password.value;
+        if (name == null || name == "") {
+            alert("Name cant be blank");
+            return false;
+        }
+        else if(password.length < 6) {
+            alert("Password must be at least 6 characters long.");
+            return false;
+        }
+    }
+</script>
+<body>
+    <form method="post" action="p1.html" onsubmit="return validateForm()">
+        <pre>
+            Name:<input type="text" name="name"><br>
+            Password:<input type="password" name="password"><br>
+            <input type="submit" value="Register">
+        </pre>
+    </form>
+</body>
+
+<!-- p1.html -->
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Success</title>
+</head>
+<body>
+    <h2>Registration Successful</h2>
+    <p>Welcome, <span id="userName"></span>!</p>
+
+    <script>
+        // Get the query parameters from the URL
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get("name");
+
+        if (name) {
+            document.getElementById("userName").innerText = name;
+        } else {
+            document.getElementById("userName").innerText = "User";
+        }
+    </script>
+</body>
+</html>

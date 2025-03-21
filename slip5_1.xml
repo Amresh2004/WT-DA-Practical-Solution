@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Items>
+    <Item>
+        <ItemName>Apple</ItemName>
+        <ItemRate>1.2</ItemRate>
+        <ItemQuantity>10</ItemQuantity>
+    </Item>
+    <Item>
+        <ItemName>Banana</ItemName>
+        <ItemRate>0.5</ItemRate>
+        <ItemQuantity>20</ItemQuantity>
+    </Item>
+    <Item>
+        <ItemName>Milk</ItemName>
+        <ItemRate>2.0</ItemRate>
+        <ItemQuantity>5</ItemQuantity>
+    </Item>
+    <Item>
+        <ItemName>Bread</ItemName>
+        <ItemRate>1.5</ItemRate>
+        <ItemQuantity>8</ItemQuantity>
+    </Item>
+    <Item>
+        <ItemName>Eggs</ItemName>
+        <ItemRate>3.0</ItemRate>
+        <ItemQuantity>12</ItemQuantity>
+    </Item>
+</Items>

@@ -1,0 +1,112 @@
+1️⃣ Create the database table
+First, run this SQL query in your database to create the student table:
+CREATE TABLE student (
+    rollno INT PRIMARY KEY,
+    name VARCHAR(100),
+    class VARCHAR(50)
+);
+
+2️2️⃣ Set up CodeIgniter database config
+Go to application/config/database.php and set your database connection:
+
+$db['default'] = array(
+    'dsn'   => '',
+    'hostname' => 'localhost',
+    'username' => 'root',
+    'password' => '',
+    'database' => 'your_database_name',
+    'dbdriver' => 'mysqli',
+    'dbprefix' => '',
+    'pconnect' => FALSE,
+    'db_debug' => (ENVIRONMENT !== 'production'),
+    'cache_on' => FALSE,
+    'cachedir' => '',
+    'charset' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'encrypt' => FALSE,
+    'compress' => FALSE,
+    'stricton' => FALSE,
+    'failover' => array(),
+    'save_queries' => TRUE
+);
+
+
+3️⃣ Create a model to handle data (Student_model.php)
+In application/models/Student_model.php:
+
+<?php
+class Student_model extends CI_Model {
+
+    public function insert_students() {
+        $data = [
+            ['rollno' => 1, 'name' => 'John Doe', 'class' => '10A'],
+            ['rollno' => 2, 'name' => 'Jane Smith', 'class' => '10B'],
+            ['rollno' => 3, 'name' => 'Mike Brown', 'class' => '10C'],
+            ['rollno' => 4, 'name' => 'Emily Davis', 'class' => '10A'],
+            ['rollno' => 5, 'name' => 'Chris Johnson', 'class' => '10B']
+        ];
+
+        $this->db->insert_batch('student', $data);
+        return $this->db->affected_rows();
+    }
+
+    public function get_students() {
+        return $this->db->get('student')->result_array();
+    }
+}
+
+
+4️⃣ Create a controller (Student.php)
+In application/controllers/Student.php:
+
+<?php
+class Student extends CI_Controller {
+
+    public function index() {
+        $this->load->model('Student_model');
+        
+        // Insert student records
+        $rows = $this->Student_model->insert_students();
+        echo "$rows student records inserted successfully!<br>";
+
+        // Display the inserted data
+        $data['students'] = $this->Student_model->get_students();
+        $this->load->view('student_view', $data);
+    }
+}
+
+
+5️⃣ Create a view file (student_view.php)
+In application/views/student_view.php:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Records</title>
+</head>
+<body>
+    <h2>Student Records</h2>
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Class</th>
+        </tr>
+        <?php foreach($students as $student): ?>
+        <tr>
+            <td><?php echo $student['rollno']; ?></td>
+            <td><?php echo $student['name']; ?></td>
+            <td><?php echo $student['class']; ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+</body>
+</html>
+
+
+✅ Run the project
+Open your browser and visit:
+http://localhost/your_project/index.php/student
+
+It will insert 5 records and show them in a table.

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+    <student>
+        <name>Amresh Warad</name>
+        <age>20</age>
+        <gender>Male</gender>
+        <course>Computer Science</course>
+        <grade>A</grade>
+    </student>
+    <student>
+        <name>Shubham Tayade</name>
+        <age>20</age>
+        <gender>Male</gender>
+        <course>Information Technology</course>
+        <grade>B</grade>
+    </student>
+    <student>
+        <name>Mitesh Gorad</name>
+        <age>20</age>
+        <gender>Male</gender>
+        <course>Mechanical Engineering</course>
+        <grade>A</grade>
+    </student>
+</students>
+

@@ -1,0 +1,49 @@
+<!-- Create a file named checkNumber.js in assets/js/ (or any preferred folder).-->
+// assets/js/checkNumber.js
+function checkNumber() {
+    let number = document.getElementById("numberInput").value;
+    let result = document.getElementById("result");
+
+    if (number > 0) {
+        result.innerHTML = `${number} is a Positive number`;
+        result.style.color = "green";
+    } else if (number < 0) {
+        result.innerHTML = `${number} is a Negative number`;
+        result.style.color = "red";
+    } else {
+        result.innerHTML = "The number is Zero";
+        result.style.color = "blue";
+    }
+}
+
+<!--In your application/views folder, create a view file called number_check.php:--> 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Check - CodeIgniter</title>
+    <script src="<?php echo base_url('assets/js/checkNumber.js'); ?>"></script>
+</head>
+<body>
+    <h2>Check if a Number is Positive or Negative</h2>
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <button onclick="checkNumber()">Check</button>
+    <p id="result"></p>
+</body>
+</html>
+
+<!-- In application/controllers, create a controller — let’s name it NumberCheck.php:-->
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class NumberCheck extends CI_Controller {
+    public function index() {
+        $this->load->helper('url');
+        $this->load->view('number_check');
+    }
+}
+ 
+<!--In application/config/routes.php, add this route:-->
+$route['number-check'] = 'NumberCheck';
+
+<!-- Run your Codelgniter app-->
+http://localhost/your_project/number-check

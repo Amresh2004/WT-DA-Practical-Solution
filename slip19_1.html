@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form Validation</title>
+    <script>
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission
+
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            let errorMessage = '';
+
+            if (username === "") {
+                errorMessage += "Username cannot be empty!\n";
+            }
+
+            if (password === "") {
+                errorMessage += "Password cannot be empty!\n";
+            } else if (password.length < 6) {
+                errorMessage += "Password must be at least 6 characters long!\n";
+            }
+
+            if (errorMessage) {
+                alert(errorMessage);
+            } else {
+                alert('Login successful!');
+                document.getElementById('loginForm').submit();
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>User Login</h2>
+    <form id="loginForm" onsubmit="validateForm(event)">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
